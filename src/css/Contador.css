@@ -1,0 +1,15 @@
+.title {
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 394px;
+    font-size: 2.6rem;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* border: 2px solid red; */
+}
+
+.title span {
+    color: #ffa500;
+}

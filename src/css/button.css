@@ -1,0 +1,24 @@
+.btn {
+    background-color: #14c;
+    transform: rotate(0);
+    transition: .3s ease;
+    color: #fff;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    top: 90%;
+    right: 10%;
+    z-index: 1;
+}
+
+.btn:hover {
+    transform: rotate(360deg);
+}

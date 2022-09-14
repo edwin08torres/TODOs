@@ -1,0 +1,79 @@
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage";
+const TodoContext = React.createContext();
+
+function TodoPriveder(props) {
+  // Desestructuramos los datos que retornamos de nuestro custom hook, y le pasamos los argumentos que necesitamos (nombre y estado inicial)
+  const {
+    item: task,
+    saveItem: saveTask,
+    loading,
+    error,
+  } = useLocalStorage("TASK_V1", []);
+  const [searchValues, setSearchValue] = React.useState("");
+  const completedTask = task.filter((todo) => !!todo.completed).length;
+  const totalTask = task.length;
+  const [openModal, setOpenModal] = React.useState(false);
+  let searchedTask = [];
+
+  if (!searchValues >= 1) {
+    searchedTask = task;
+  } else {
+    searchedTask = task.filter((todo) => {
+      const taskText = todo.text.toLowerCase();
+      const searchText = searchValues.toLowerCase();
+      return taskText.includes(searchText);
+    });
+  }
+
+  // Función para añadir un nuevo TODO
+  const addTodo = (text) => {
+    const newTodos = [...task];
+    newTodos.push({
+      completed: false,
+      text,
+    });
+    saveTask(newTodos);
+  };
+
+  const completeTask = (text) => {
+    const taskIndex = task.findIndex((todo) => todo.text === text);
+    const newTask = [...task];
+    newTask[taskIndex].completed = true;
+    saveTask(newTask);
+    /* Esto es lo mismo que lo que tenemos en la parte de arriba.
+      task[taskIndex] ={
+        text: task[taskIndex].text,
+        completed:true, 
+    }*/
+  };
+
+  const deleteTask = (text) => {
+    const taskIndex = task.findIndex((todo) => todo.text === text);
+    const newTask = [...task];
+    newTask.splice(taskIndex, 1);
+    saveTask(newTask);
+  };
+  return (
+    <TodoContext.Provider
+      value={{
+        loading,
+        error,
+        totalTask,
+        completedTask,
+        searchValues,
+        setSearchValue,
+        searchedTask,
+        addTodo,
+        completeTask,
+        deleteTask,
+        openModal,
+        setOpenModal,
+      }}
+    >
+      {props.children}
+    </TodoContext.Provider>
+  );
+}
+
+export { TodoContext, TodoPriveder };
