@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/TODOs/static/css/main.06612fc1.css",
+    "main.js": "/TODOs/static/js/main.d4d32dda.js",
+    "static/media/undraw_office_snack_re_l162.svg": "/TODOs/static/media/undraw_office_snack_re_l162.c1b2f17b8d170f7780c4.svg",
+    "index.html": "/TODOs/index.html",
+    "main.06612fc1.css.map": "/TODOs/static/css/main.06612fc1.css.map",
+    "main.d4d32dda.js.map": "/TODOs/static/js/main.d4d32dda.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06612fc1.css",
+    "static/js/main.d4d32dda.js"
+  ]
+}
