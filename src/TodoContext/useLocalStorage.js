@@ -27,7 +27,7 @@ function useLocalStorage(itemName, initialValue) {
       } catch (error) {
         setError(error);
       }
-    }, 1000);
+    }, 5000);
   });
 
   // Actualizamos la función para guardar nuestro item con las nuevas variables y parámetros

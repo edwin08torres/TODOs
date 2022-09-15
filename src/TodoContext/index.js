@@ -6,7 +6,7 @@ function TodoPriveder(props) {
   // Desestructuramos los datos que retornamos de nuestro custom hook, y le pasamos los argumentos que necesitamos (nombre y estado inicial)
   const {
     item: task,
-    saveItem: saveTask,
+    saveTask,
     loading,
     error,
   } = useLocalStorage("TASK_V1", []);
@@ -27,13 +27,13 @@ function TodoPriveder(props) {
   }
 
   // Función para añadir un nuevo TODO
-  const addTodo = (text) => {
-    const newTodos = [...task];
-    newTodos.push({
+  const addTask = (text) => {
+    const newTask = [...task];
+    newTask.push({
       completed: false,
       text,
     });
-    saveTask(newTodos);
+    saveTask(newTask);
   };
 
   const completeTask = (text) => {
@@ -64,7 +64,7 @@ function TodoPriveder(props) {
         searchValues,
         setSearchValue,
         searchedTask,
-        addTodo,
+        addTask,
         completeTask,
         deleteTask,
         openModal,

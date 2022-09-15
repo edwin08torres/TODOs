@@ -7,7 +7,13 @@ import { Button } from "../FunctionJs/button";
 import { TodoContext } from "../TodoContext";
 import { Modal } from "../Modal";
 import { TaskForm } from "../TaskForm";
+import { TaskError } from "../taskError/index"
+import { TaskLoading } from "../taskLoading"
+import { TaskEmpty } from "../TaskEmpty"
+
+
 function AppUI() {
+// llamados de reac context
   const {
     error,
     loading,
@@ -24,9 +30,10 @@ function AppUI() {
       <Buscador />
 
       <Lista>
-        {error && <p>Hubo un error, la cagaste</p>}
-        {loading && <p>Estamos cargando</p>}
-        {!loading && !searchedTask.length && <p>Ingresa tu primer Task</p>}
+        {error && <Modal><TaskError /></Modal>}
+        {loading && new Array(5).fill(1).map((a,
+        i) => <TaskLoading key={i}/>)}
+        {!loading && !searchedTask.length && <TaskEmpty />}
         {searchedTask.map((todo) => (
           <Item
             key={todo.text}
