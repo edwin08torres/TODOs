@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
 .container--empty {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     min-width: 300px;
     max-width: 558px;
     min-height: 400px;
