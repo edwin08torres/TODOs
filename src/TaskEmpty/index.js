@@ -9,7 +9,7 @@ function TaskEmpty() {
           Esto esta demasiado vacio <i className="fa-solid fa-face-frown"></i>
         </p>
         <p className="message2">
-        ¡Vamos a crear unas <span>TASKS!</span> Toca <span>+</span>
+        ¡Vamos a crear unas <span>TASKS!</span> 
         </p>
       </div>
     </section>

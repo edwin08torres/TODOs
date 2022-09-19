@@ -51,13 +51,27 @@
     width: 90%;
     height: 50%;
     display: flex;
-    flex-direction: column;
-    text-align: center;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
     font-family: 'Rubik', sans-serif;
     /* border: 2px solid red; */
 }
 
 .container--message .message2 span {
     font-weight: bold;
-    color: #019;
+    color: #1c9;
+}
+
+.container--message .message2 .plus{
+    background-color: #1c9;
+    color: #000;
+    border-radius:50%;
+    width: 50px;
+    height: 50px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
 }

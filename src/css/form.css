@@ -56,7 +56,7 @@
     outline: none;
     border-radius: 10%;
     font-size: 1.4rem;
-    color: #000;
+    color: #fff;
     padding: 15px;
 }
 
@@ -95,6 +95,11 @@
 }
 
 .main--container .form--container .form--btn:hover{
+    background-color: #1c9;
+    color: #000;
+}
+
+.main--container .form--container .form--btn:focus {
     background-color: #1c9;
     color: #000;
 }
