@@ -30,7 +30,7 @@ function AppUI() {
       <Buscador />
 
       <Lista>
-        {error && <Modal><TaskError /></Modal>}
+        {error && <TaskError />}
         {loading && new Array(5).fill(1).map((a,
         i) => <TaskLoading key={i}/>)}
         {!loading && !searchedTask.length && <TaskEmpty />}

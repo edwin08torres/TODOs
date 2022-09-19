@@ -1,0 +1,49 @@
+.container--empty {
+    position: absolute;
+    /* border: 2px solid red; */
+}
+
+/* .Container .search{
+    display: none;
+} */
+
+.Container--error {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 280px;
+    max-width: 450px;
+    min-height: 60vh;
+    height: 100%;
+    border-radius: 20px;
+    z-index: 0;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    /* background-image: linear-gradient(to top, #001 0%, #43c 100%); */
+}
+
+.Container--error i {
+    font-size: 12rem;
+    color: #fff;
+}
+
+.Container--error .Parrafo {
+    /* border: 2px solid red; */
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.Container--error .Parrafo .Mensaje {
+    font-size: 2rem;
+    line-height: 1.3;
+    letter-spacing: .3rem;
+}
+
+/* .btn {
+    display: none;
+} */
