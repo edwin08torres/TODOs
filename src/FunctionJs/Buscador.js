@@ -14,7 +14,7 @@ function Buscador() {
     <div className="Container">
       <input
         className="search"
-        placeholder="Cebolla"
+        placeholder="Buscar task"
         value={searchValues}
         onChange={searchValue}
       ></input>
