@@ -26,7 +26,7 @@ function TaskForm({addTask,setOpenModal}) {
           className="form--textarea"
           value={newTaskValue}
           onChange={onChange}
-          placeholder="Ingrese tus tareas kbron"
+          placeholder="Ingrese tus tareas"
         />
         <div className="buttons">
           <button className="form--btn" type="button" onClick={onCancel}>
