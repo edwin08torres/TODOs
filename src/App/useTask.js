@@ -1,9 +1,7 @@
 import React from "react";
-
 import { useLocalStorage } from "./useLocalStorage";
-const TodoContext = React.createContext();
 
-function TodoPriveder(props) {
+function useTask() {
   // Desestructuramos los datos que retornamos de nuestro custom hook, y le pasamos los argumentos que necesitamos (nombre y estado inicial)
   const {
     item: task,
@@ -55,9 +53,7 @@ function TodoPriveder(props) {
     newTask.splice(taskIndex, 1);
     saveTask(newTask);
   };
-  return (
-    <TodoContext.Provider
-      value={{
+  return {
         loading,
         error,
         totalTask,
@@ -70,11 +66,7 @@ function TodoPriveder(props) {
         deleteTask,
         openModal,
         setOpenModal,
-      }}
-    >
-      {props.children}
-    </TodoContext.Provider>
-  );
+  }
 }
 
-export { TodoContext, TodoPriveder };
+export { useTask };

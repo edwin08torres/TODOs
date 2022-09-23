@@ -1,23 +1,16 @@
 import React from "react";
-import { TodoContext } from "../TodoContext";
 import "../css/form.css"
 
-function TaskForm() {
-    // Creamos el estado para el nuevo TODOs
-  const [newTaskValue,setNewTaskValue] = React.useState('');
-    const { 
-    addTask,
-    setOpenModal,
-} = React.useContext(TodoContext);
-
-const onChange = (event) =>{
-    setNewTaskValue(event.target.value);  
-  }
+function TaskForm({addTask,setOpenModal}) {
+  // Creamos el estado para el nuevo TODOs
+  const [newTaskValue, setNewTaskValue] = React.useState("");
+  const onChange = (event) => {
+    setNewTaskValue(event.target.value);
+  };
   const onCancel = () => {
-   setOpenModal(false);
+    setOpenModal(false);
   };
 
-  
   const onSubmit = (event) => {
     event.preventDefault();
     addTask(newTaskValue);
@@ -26,7 +19,9 @@ const onChange = (event) =>{
   return (
     <section className="main--container">
       <form onSubmit={onsubmit} className="form--container">
-        <label className="form--tittle">Escribe tu nuevo <span>TASK</span></label>
+        <label className="form--tittle">
+          Escribe tu nuevo <span>TASK</span>
+        </label>
         <textarea
           className="form--textarea"
           value={newTaskValue}
