@@ -31,14 +31,24 @@ function App() {
   return (
     <React.Fragment>
       <TaskHeader>
-        <Contador totalTask={totalTask} completedTask={completedTask} />
-        <Buscador searchValues={searchValues} setSearchValue={setSearchValue} />
+        <Contador 
+        totalTask={totalTask} 
+        completedTask={completedTask} />
+
+        <Buscador 
+        searchValues={searchValues} 
+        setSearchValue={setSearchValue} />
       </TaskHeader>
-      <Lista>
-        {error && <TaskError />}
-        {loading && new Array(5).fill(1).map((a, i) => <TaskLoading key={i} />)}
-        {!loading && !searchedTask.length && <TaskEmpty />}
-        {searchedTask.map((todo) => (
+
+      {/* ESTA ES LA PARTE NUEVA CON LOS RENDERS PROPS */}
+      <Lista
+        error={error}
+        loading={loading}
+        searchedTask={searchedTask}
+        onError={() => <TaskError />}
+        onLoading={() => <TaskLoading />}
+        onEmpty={() => <TaskEmpty />}
+        render={todo => (
           <Item
             key={todo.text}
             text={todo.text}
@@ -46,9 +56,9 @@ function App() {
             onComplete={() => completeTask(todo.text)}
             onDelete={() => deleteTask(todo.text)}
           />
-        ))}
-      </Lista>
-
+        )}
+      />
+      {/* ACA TERMINA LA PARTE NUEVA CON LOS RENDERS PROPS */}
       {/* Preguntamos si "openModal es = true 
           si es asi, entramos a las siguientes lineas de codigo.*/}
       {!!openModal && (
@@ -56,10 +66,7 @@ function App() {
           {/* '?' con esto estamos preguntado si existe el array de "searchedTask"
         para luego mostrar el texto ".text" */}
           {/* <p>{searchedTask[2]?.text}</p> */}
-          <TaskForm 
-          addTask={addTask}
-          setOpenModal={setOpenModal}
-          />
+          <TaskForm addTask={addTask} setOpenModal={setOpenModal} />
         </Modal>
       )}
       <Button openModal={openModal} setOpenModal={setOpenModal} />
