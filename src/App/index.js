@@ -9,6 +9,7 @@ import { TaskForm } from "../TaskForm";
 import { TaskError } from "../taskError/index";
 import { TaskLoading } from "../taskLoading";
 import { TaskEmpty } from "../TaskEmpty";
+import { TaskEmptyResult } from "../TaskEmptyResult";
 import { TaskHeader } from "../Header";
 import { useTask } from "./useTask"
 
@@ -31,13 +32,9 @@ function App() {
   return (
     <React.Fragment>
       <TaskHeader>
-        <Contador 
-        totalTask={totalTask} 
-        completedTask={completedTask} />
+        <Contador totalTask={totalTask} completedTask={completedTask} />
 
-        <Buscador 
-        searchValues={searchValues} 
-        setSearchValue={setSearchValue} />
+        <Buscador searchValues={searchValues} setSearchValue={setSearchValue} />
       </TaskHeader>
 
       {/* ESTA ES LA PARTE NUEVA CON LOS RENDERS PROPS */}
@@ -46,9 +43,13 @@ function App() {
         loading={loading}
         searchedTask={searchedTask}
         onError={() => <TaskError />}
+        totalTask={totalTask}
+        searchText={searchValues}
         onLoading={() => <TaskLoading />}
         onEmpty={() => <TaskEmpty />}
-        render={todo => (
+        onEmptySearchResult={(searchText) => (
+          <TaskEmptyResult searchText={searchText} />)}
+        render={(todo) => (
           <Item
             key={todo.text}
             text={todo.text}
@@ -57,7 +58,17 @@ function App() {
             onDelete={() => deleteTask(todo.text)}
           />
         )}
-      />
+      >
+        {/* {todo => (
+          <Item
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTask(todo.text)}
+            onDelete={() => deleteTask(todo.text)}
+          />
+        )} */}
+      </Lista>
       {/* ACA TERMINA LA PARTE NUEVA CON LOS RENDERS PROPS */}
       {/* Preguntamos si "openModal es = true 
           si es asi, entramos a las siguientes lineas de codigo.*/}
