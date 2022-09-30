@@ -12,6 +12,7 @@ import { TaskEmpty } from "../TaskEmpty";
 import { TaskEmptyResult } from "../TaskEmptyResult";
 import { TaskHeader } from "../Header";
 import { useTask } from "./useTask"
+import { ChangeAlert } from "../ChangedAlert";
 
 function App() {
   // llamados de reac context
@@ -28,10 +29,11 @@ function App() {
     searchValues,
     setSearchValue,
     addTask,
+    sincronizeTask,
   } = useTask();
   return (
     <React.Fragment>
-      <TaskHeader>
+      <TaskHeader loading={loading}>
         <Contador totalTask={totalTask} completedTask={completedTask} />
 
         <Buscador searchValues={searchValues} setSearchValue={setSearchValue} />
@@ -48,7 +50,8 @@ function App() {
         onLoading={() => <TaskLoading />}
         onEmpty={() => <TaskEmpty />}
         onEmptySearchResult={(searchText) => (
-          <TaskEmptyResult searchText={searchText} />)}
+          <TaskEmptyResult searchText={searchText} />
+        )}
         render={(todo) => (
           <Item
             key={todo.text}
@@ -81,6 +84,10 @@ function App() {
         </Modal>
       )}
       <Button openModal={openModal} setOpenModal={setOpenModal} />
+
+      <ChangeAlert
+      sincronize={sincronizeTask}
+      />
     </React.Fragment>
   );
 }

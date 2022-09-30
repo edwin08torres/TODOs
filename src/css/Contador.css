@@ -13,3 +13,7 @@
 .title span {
     color: #ffa500;
 }
+
+.Taskloading{
+    opacity: 50%;
+}

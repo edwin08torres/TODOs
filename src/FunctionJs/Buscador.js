@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Buscador.css";
-function Buscador({ searchValues, setSearchValue }) {
+function Buscador({ searchValues, setSearchValue , loading}) {
   const searchValue = (event) => {
     console.log(event.target.value);
     setSearchValue(event.target.value);
@@ -13,6 +13,7 @@ function Buscador({ searchValues, setSearchValue }) {
         placeholder="Buscar task"
         value={searchValues}
         onChange={searchValue}
+        disabled={loading}
       ></input>
     </div>
   );

@@ -28,3 +28,11 @@
     color: #aaa;
     font-weight: 100;
 }
+
+.Container{
+    transition: .3s;
+}
+
+.Container .search:disabled{
+    opacity: 65%;
+}

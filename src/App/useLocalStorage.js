@@ -7,6 +7,10 @@ function useLocalStorage(itemName, initialValue) {
   const [loading, setLoading] = React.useState(true);
   // Estado inicial :  NO ha habido un error!
   const [error, setError] = React.useState(false);
+
+  // Este estado nos dira si estamos sincronizados con todas las pestañas y ventanas del navegador o no 
+  const [sincronizedItem, setSincronizedItem] = React.useState(true);
+
   React.useEffect(() => {
     setTimeout(() => {
       try {
@@ -24,11 +28,12 @@ function useLocalStorage(itemName, initialValue) {
 
         setItem(parsedItem);
         setLoading(false);
+        setSincronizedItem(true);
       } catch (error) {
         setError(error);
       }
     }, 5000);
-  });
+  }, [sincronizedItem]);
 
   // Actualizamos la función para guardar nuestro item con las nuevas variables y parámetros
   const saveTask = (newItem) => {
@@ -40,12 +45,19 @@ function useLocalStorage(itemName, initialValue) {
       setError(error);
     }
   };
+
+  const sincronizeItem = () =>{
+    setLoading(true);
+    setSincronizedItem(false);
+    setItem(initialValue);
+  }
   // Regresamos los datos que necesitamos
   return {
     item,
     saveTask,
     loading,
     error,
+    sincronizeItem,
   };
 }
 

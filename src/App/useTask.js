@@ -6,8 +6,10 @@ function useTask() {
   const {
     item: task,
     saveTask,
+    sincronizeItem: sincronizeTask,
     loading,
     error,
+    
   } = useLocalStorage("TASK_V1", []);
   const [searchValues, setSearchValue] = React.useState("");
   const completedTask = task.filter((todo) => !!todo.completed).length;
@@ -66,6 +68,7 @@ function useTask() {
         deleteTask,
         openModal,
         setOpenModal,
+        sincronizeTask,
   }
 }
 
